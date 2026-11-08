@@ -1,0 +1,44 @@
+name: Publish rqcli
+on:
+  pull_request:
+  push:
+    branches: [main, 'rqcli-publish/**']
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s scripts -p 'test_*.py'
+
+  publish:
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/rqcli-publish/')
+    needs: verify
+    runs-on: macos-15
+    timeout-minutes: 40
+    environment: rqcli-release
+    concurrency:
+      group: rqcli-publication
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      NPM_CONFIG_PROVENANCE: 'false'
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+      HOMEBREW_NO_INSTALL_CLEANUP: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
+      - run: npm install --global npm@11.21.0 --ignore-scripts
+      - run: python3 scripts/publish.py
