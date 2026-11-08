@@ -144,7 +144,7 @@ def verify_install(version, artifacts):
                                           "--", "rqcli", "--version"], cwd=directory, env=env, text=True, timeout=180)
         if output.strip() != "rqcli version " + version:
             raise ValueError(f"Unexpected npm executable: {output}")
-    subprocess.run(["brew", "tap-new", "rabbitqa/ci-validation"], check=True)
+    subprocess.run(["brew", "tap-new", "--no-git", "rabbitqa/ci-validation"], check=True)
     tap = Path(subprocess.check_output(["brew", "--repository", "rabbitqa/ci-validation"], text=True).strip())
     shutil.copyfile(artifacts / "rqcli.rb", tap / "Formula/rqcli.rb")
     subprocess.run(["brew", "install", "--formula", "rabbitqa/ci-validation/rqcli"], check=True, timeout=300)
