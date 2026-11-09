@@ -136,7 +136,8 @@ def wait_installable(packages, version, timeout=900):
 
 def verify_install(version, artifacts):
     with tempfile.TemporaryDirectory(prefix="rqcli-install-") as directory:
-        env = {**os.environ, "NPM_CONFIG_USERCONFIG": os.devnull, "NPM_CONFIG_GLOBALCONFIG": os.devnull,
+        env = {**os.environ, "NPM_CONFIG_USERCONFIG": directory + "/user.npmrc",
+               "NPM_CONFIG_GLOBALCONFIG": directory + "/global.npmrc",
                "NPM_CONFIG_CACHE": directory + "/cache", "RQCLI_CONFIG_DIR": directory + "/config"}
         for key in ("NODE_AUTH_TOKEN", "NPM_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_URL"):
             env.pop(key, None)
