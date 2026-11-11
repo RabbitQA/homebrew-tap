@@ -1,28 +1,28 @@
 class Rqcli < Formula
   desc "Manage RabbitQA tests, AI generation, reports and Device Farm"
   homepage "https://rabbitqa.com"
-  version "1.14.1"
+  version "1.14.2"
   license :cannot_represent
 
   on_macos do
     on_arm do
-      url "https://downloads.rabbitqa.com/rqcli/releases/1.14.1/rqcli-1.14.1-darwin-arm64.tar.gz"
-      sha256 "8c643f2e0328f9a3546079d59bf72016b16fcc6e1cbfddead95b93ca645c2cfa"
+      url "https://downloads.rabbitqa.com/rqcli/releases/1.14.2/rqcli-1.14.2-darwin-arm64.tar.gz"
+      sha256 "9d582c1bcd33ccf7722717ea1f5848facd4efac6bc177f4a228499d6b5c8bfb6"
     end
     on_intel do
-      url "https://downloads.rabbitqa.com/rqcli/releases/1.14.1/rqcli-1.14.1-darwin-amd64.tar.gz"
-      sha256 "eaecfc7b5aa4e6bcdace517f6dba29e711f58974f00564a44298385a7177a533"
+      url "https://downloads.rabbitqa.com/rqcli/releases/1.14.2/rqcli-1.14.2-darwin-amd64.tar.gz"
+      sha256 "bda685e3a2ba21494538b1e725c60fcbef7b543cbf233e22d3b4d86d9abd0f9e"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://downloads.rabbitqa.com/rqcli/releases/1.14.1/rqcli-1.14.1-linux-arm64.tar.gz"
-      sha256 "b4f0d00f3345d40e4e23fd271d8ed17801171a26c4bf74a07d4ed89ff74c3e54"
+      url "https://downloads.rabbitqa.com/rqcli/releases/1.14.2/rqcli-1.14.2-linux-arm64.tar.gz"
+      sha256 "091f9a8591519077f598876b451ff0ce327b67eadf236daadd93fe92309b81f9"
     end
     on_intel do
-      url "https://downloads.rabbitqa.com/rqcli/releases/1.14.1/rqcli-1.14.1-linux-amd64.tar.gz"
-      sha256 "ecd1501749033bc304d00fcee734f86bdb400f2977197985845659142d9cefc1"
+      url "https://downloads.rabbitqa.com/rqcli/releases/1.14.2/rqcli-1.14.2-linux-amd64.tar.gz"
+      sha256 "e57e0f12d353c0642383c07c1688813c3250ed781fd13f95e92abf203b2dd313"
     end
   end
 
